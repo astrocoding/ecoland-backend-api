@@ -79,3 +79,12 @@ const filterLandsByLocation = async (req, res) => {
     res.status(500).json({ message: 'Error fetching lands' });
   }
 };
+
+module.exports = { 
+  getAllLands,
+  getLandById,
+  createLand,
+  updateLand,
+  deleteLand,
+  filterLandsByLocation
+};
