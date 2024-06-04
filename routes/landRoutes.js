@@ -2,14 +2,13 @@ const express = require('express');
 const router = express.Router();
 const landController = require('../controllers/landController');
 const authMiddleware = require('../middleware/authMiddleware');
-const isAdminMiddleware = require('../middleware/authMiddleware');
 
-router.get('/', authMiddleware, landController.getAllLands);
-router.get('/:id', authMiddleware, landController.getLandById);
-router.post('/', authMiddleware, isAdminMiddleware, landController.createLand);
-router.put('/:id', authMiddleware, isAdminMiddleware, landController.updateLand);
-router.delete('/:id', authMiddleware, isAdminMiddleware, landController.deleteLand);
-router.get('/filter', authMiddleware, landController.filterLandsByLocation);
-router.get('/search', authMiddleware, landController.searchLands);
+router.get('/', authMiddleware.authMiddleware, landController.getAllLands); 
+router.get('/:id', authMiddleware.authMiddleware, landController.getLandById);
+router.post('/', authMiddleware.authMiddleware, authMiddleware.isAdminMiddleware, landController.createLand);
+router.put('/:id', authMiddleware.authMiddleware, authMiddleware.isAdminMiddleware, landController.updateLand); // Auth first, then isAdmin
+router.delete('/:id', authMiddleware.authMiddleware, authMiddleware.isAdminMiddleware, landController.deleteLand); // Auth first, then isAdmin
+router.get('/filter', authMiddleware.authMiddleware, landController.filterLandsByLocation);
+router.get('/search', authMiddleware.authMiddleware, landController.searchLands);
 
 module.exports = router;

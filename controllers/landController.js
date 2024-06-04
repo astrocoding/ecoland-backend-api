@@ -14,7 +14,7 @@ const getLandById = async (req, res) => {
   const landId = req.params.id;
 
   try {
-    const [rows] = await db.execute('SELECT * FROM lands WHERE id = ?', [landId]);
+    const [rows] = await db.execute('SELECT * FROM lands WHERE id = ? AND availability = 1', [landId]);
     if (rows.length === 0) {
       return res.status(404).json({ message: 'Land not found' });
     }
@@ -29,7 +29,7 @@ const createLand = async (req, res) => {
   const { name, location, description, size, price_per_day, verified } = req.body;
 
   try {
-    const [result] = await db.execute('INSERT INTO lands (name, location, description, size, price_per_day, verified) VALUES (?, ?, ?, ?, ?, ?)', [name, location, description, size, price_per_day, verified]);
+    const [result] = await db.execute('INSERT INTO lands (name, location, description, size, price_per_day, verified, availability) VALUES (?, ?, ?, ?, ?, ?, 1)', [name, location, description, size, price_per_day, verified]);
     res.status(201).json({ message: 'Land created successfully' });
   } catch (error) {
     console.error(error);
@@ -75,8 +75,20 @@ const filterLandsByLocation = async (req, res) => {
     const [rows] = await db.execute('SELECT * FROM lands WHERE location LIKE ? AND availability = 1', [`%${location}%`]);
     res.json(rows);
   } catch (error) {
-    console.error
+    console.error(error);
     res.status(500).json({ message: 'Error fetching lands' });
+  }
+};
+
+const searchLands = async (req, res) => {
+  const keyword = req.query.keyword;
+
+  try {
+    const [rows] = await db.execute('SELECT * FROM lands WHERE name LIKE ? OR location LIKE ? AND availability = 1', [`%${keyword}%`, `%${keyword}%`]);
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error searching lands' });
   }
 };
 
@@ -86,5 +98,6 @@ module.exports = {
   createLand,
   updateLand,
   deleteLand,
-  filterLandsByLocation
+  filterLandsByLocation,
+  searchLands
 };
