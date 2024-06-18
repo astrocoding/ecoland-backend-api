@@ -104,9 +104,7 @@ app.get('/', (req, res) => {
   res.json({ message: 'Server berhasil berjalan tanpa masalah' });
 });
 
-const PORT = process.env.PORT || 5000;
-const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
-
+const PORT = 5000;
 
 app.listen(PORT, HOST, ()=> {
     console.log('Server up and running...');
