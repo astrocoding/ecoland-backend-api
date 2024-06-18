@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const landController = require('../controllers/landController');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/AuthUser');
 
 router.get('/', authMiddleware.authMiddleware, landController.getAllLands); 
 router.get('/:id', authMiddleware.authMiddleware, landController.getLandById);
