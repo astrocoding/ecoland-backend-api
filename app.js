@@ -50,10 +50,7 @@ app.use(session({
     }
 }));
 
-app.use(cors({
-    credentials: true,
-    origin: 'https://ecoland-frontend-test.vercel.app'
-}));
+app.use(cors());
 
 app.use(express.json());
 app.use(UserRoute);
