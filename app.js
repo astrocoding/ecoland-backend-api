@@ -35,7 +35,7 @@ const store = new sessionStore({
 })();
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'hxaqfgKv172cvNFvzKmLFkVhYPYWNXQc',
     resave: false,
     saveUninitialized: true,
     store: store,
@@ -60,8 +60,8 @@ store.sync();
 
 // Google Cloud Storage setup
 const gc = new Storage({
-    keyFilename: path.join(__dirname, process.env.KEY_PATH),
-    projectId: process.env.PROJECT_ID,
+    keyFilename: path.join(__dirname, './keys/submission-mgce-zaenalalfian-0-d30d4045eddc.json'),
+    projectId: 'submission-mgce-zaenalalfian-0',
 });
 
 const bucket = gc.bucket('submission-zaenalalfian');
