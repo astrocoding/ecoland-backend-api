@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const rentalController = require('../controllers/rentalController');
+const rentalController = require('../controllers/History');
 const authMiddleware = require('../middleware/AuthUser');
 
 router.post('/', authMiddleware, rentalController.createRental);
