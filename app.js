@@ -6,7 +6,7 @@ import { Storage } from '@google-cloud/storage';
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import db from "./config/Database.js";
+import db from "./config/db.js";
 import SequelizeStore from "connect-session-sequelize";
 import UserRoute from "./routes/UserRoute.js";
 import LandRoute from "./routes/LandRoute.js";
@@ -100,6 +100,14 @@ app.post('/upload', upload.single('image'), (req, res) => {
     blobStream.end(req.file.buffer);
 });
 
-app.listen(5000, ()=> {
+app.get('/', (req, res) => {
+  res.json({ message: 'Server berhasil berjalan tanpa masalah' });
+});
+
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+
+
+app.listen(PORT, HOST, ()=> {
     console.log('Server up and running...');
 });
