@@ -100,6 +100,12 @@ app.post('/upload', upload.single('image'), (req, res) => {
     blobStream.end(req.file.buffer);
 });
 
-app.listen(5000, ()=> {
+app.get('/', (req, res) => {
+  res.json({ message: 'Server berhasil berjalan tanpa masalah' });
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, '0.0.0.0', ()=> {
     console.log('Server up and running...');
 });
