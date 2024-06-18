@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import db from "../config/Database.js";
+import db from "../config/db.js";
 import Users from "./UserModel.js";
 import Land from "./LandModel.js";
 import Transactions from "./TransactionModel.js";
