@@ -13,9 +13,15 @@ import LandRoute from "./routes/LandRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 import TransactionRoute from "./routes/TransactionsRoute.js";
 import HistoryRoute from "./routes/HistoryRoute.js";
+import bodyParser from 'body-parser';
+
 dotenv.config();
 
 const app = express();
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
 
 // Konfigurasi ES Module untuk mendapatkan __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -46,7 +52,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin: 'https://ecoland-frontend-test.vercel.app'
 }));
 
 app.use(express.json());
