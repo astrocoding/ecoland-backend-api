@@ -46,16 +46,15 @@ app.use(session({
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: true,
-        httpOnly: true,
-        sameSite: 'none',
-        domain: '.onrender.com'
+        secure: 'auto',
     }
 }));
 
+store.sync();
+
 app.use(cors({
     credentials: true,
-    origin: ['https://ecoland-frontend.vercel.app/', 'https://ecoland-frontend-test.vercel.app/']
+    origin: ['https://ecoland-frontend.vercel.app/']
 }));
 
 app.use(express.json());
@@ -65,7 +64,7 @@ app.use(AuthRoute);
 app.use(TransactionRoute);
 app.use(HistoryRoute);
 
-store.sync();
+
 
 // Google Cloud Storage setup
 const gc = new Storage({
