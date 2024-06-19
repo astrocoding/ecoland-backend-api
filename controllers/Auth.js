@@ -35,8 +35,8 @@ export const Register = async(req, res) =>{
 }
 
 export const Me = async (req, res) =>{
-    if(req.session.userId){
-        return res.status(200).json(user);
+    if(!req.session.userId){
+        return res.status(401).json({msg: "harap login"});
     }
     const user = await User.findOne({
         attributes:['uuid','name','email','role'],
