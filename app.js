@@ -46,7 +46,7 @@ app.use(session({
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: 'auto',
+        secure: true,
         httpOnly: true,
         sameSite: 'none',
         domain: '.onrender.com'
@@ -54,8 +54,8 @@ app.use(session({
 }));
 
 app.use(cors({
-    credentials: false,
-    origin: true
+    credentials: true,
+    origin: 'https://ecoland-frontend-test.vercel.app'
 }));
 
 app.use(express.json());
