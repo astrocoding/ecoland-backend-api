@@ -55,7 +55,7 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:5173', 'https://ecoland-backend-api.onrender.com', https://ecoland-frontend-test.vercel.app/]
+    origin: ['http://localhost:5173', 'https://ecoland-backend-api.onrender.com', 'https://ecoland-frontend-test.vercel.app']
 }));
 
 app.use(express.json());
