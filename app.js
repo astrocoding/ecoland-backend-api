@@ -54,8 +54,8 @@ app.use(session({
 }));
 
 app.use(cors({
-    credentials: true,
-    origin: 'https://ecoland-frontend-test.vercel.app'
+    credentials: false,
+    origin: 'https://ecoland-frontend.vercel.app/'
 }));
 
 app.use(express.json());
