@@ -46,7 +46,7 @@ app.use(session({
     saveUninitialized: true,
     store: store,
     cookie: {
-        secure: true,
+        secure: 'auto',
         httpOnly: true,
         sameSite: 'none',
         domain: '.onrender.com'
