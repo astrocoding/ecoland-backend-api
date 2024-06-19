@@ -2,7 +2,7 @@ import User from "../models/UserModel.js";
 import argon2 from "argon2";
 import jwt from "jsonwebtoken";
 
-const secretKey = 'your-secret-key'; // Ganti dengan kunci rahasia Anda yang aman
+const secretKey = 'hxaqfgKv172cvNFvzKmLFkVhYPYWNXQc'; // Ganti dengan kunci rahasia Anda yang aman
 
 export const Login = async (req, res) => {
     const user = await User.findOne({
