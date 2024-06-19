@@ -47,9 +47,16 @@ const verifyToken = (req, res, next) => {
     });
 };
 
+// app.use(cors({
+//     credentials: true,
+//     origin: ['https://ecoland-frontend.vercel.app/', 'http://localhost:5173']
+// }));
+
 app.use(cors({
-    credentials: true,
-    origin: ['https://ecoland-frontend.vercel.app/', 'http://localhost:5173']
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 
 app.use(express.json());
