@@ -53,7 +53,7 @@ const verifyToken = (req, res, next) => {
 // }));
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: '*',
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
